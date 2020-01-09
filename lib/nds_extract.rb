@@ -1,6 +1,6 @@
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 require_relative './directors_database'
-
+require 'pry'
 def directors_totals(source)
   result = {}
   director_index = 0
@@ -26,9 +26,30 @@ end
 
 def list_of_directors(source)
   # Write this implementation
-end
+ directors_names = []
+ row_index = 0 
+ while row_index < source.length do 
+  directors_names << source[row_index][:name]
+ row_index += 1 
+ end
+ directors_names
+end 
 
 def total_gross(source)
+  
+  grand_total = 0  
+  row_index = 0 
+  while row_index < list_of_directors(source).length do
+   glue_item = directors_totals(source)[list_of_directors(source)[row_index]]
+   grand_total += glue_item
+   row_index += 1 
+  end 
+   grand_total
+  
+   
+  
+
+  
   # Write this implementation
   #
   # Should use methods:
